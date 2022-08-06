@@ -64,14 +64,11 @@ public class Menu {
 	}
 	
 	public void listarCliente() {
-		//muestra lista de clientes agregados, 
-		//ya sea por importación o agregando a mano.
 		clienteServicio.retornolistarClientes();
 	}
 	
 	public void agregarCliente() {//Aqui se invoca al otro metodo pasandole un cliente
 		//solicita ingreso de datos y llena objeto de tipo Cliente.
-		
 		System.out.println("-------------Crear Cliente-------------");
 		System.out.println("Ingresa RUN del Cliente:");
 		String runCliente = scaner.nextLine();
@@ -82,10 +79,8 @@ public class Menu {
 		System.out.println("Ingresa años como Cliente:");
 		String aniosCliente = scaner.nextLine();
 		System.out.println("---------------------------------------");
-		Cliente cliente = new Cliente(runCliente, nombreCliente,
-				apellidoCliente, aniosCliente, CategoriaEnum.Activo);
-		clienteServicio.agregarCliente(cliente);
-		
+		clienteServicio.agregarCliente(runCliente, nombreCliente,
+				apellidoCliente, aniosCliente);
 	}
 	
 	public void editarCliente() {

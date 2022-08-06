@@ -1,9 +1,9 @@
 package cl.servicio;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
+import cl.modelo.CategoriaEnum;
 import cl.modelo.Cliente;
 
 public class ClienteServicio {
@@ -29,8 +29,8 @@ public class ClienteServicio {
 	}
 	
 	public void retornolistarClientes() {
-		System.out.println("-------------Datos del Cliente-------------");
 		for(Cliente cli: clienteList) {
+			System.out.println("-------------Datos del Cliente-------------");
 			System.out.println("");
 			System.out.println("RUN del Cliente: "+ cli.getRunCliente());
 			System.out.println("Nombre del Cliente: "+ cli.getNombreClente());
@@ -38,17 +38,20 @@ public class ClienteServicio {
 			System.out.println("Años como Cliente: "+ cli.getAniosCliente());
 			System.out.println("Categoría del Cliente: "+ cli.getNombreCategoria());
 			System.out.println("");			
+			System.out.println("-------------------------------------------");
 		}
-		System.out.println("-------------------------------------------");
 	}
 	
-	public void agregarCliente(Cliente cliente) {
+	public void agregarCliente(String run, String nombre, 
+			String apellido, String edad) {
+		Cliente cliente = new Cliente(run, nombre, apellido
+				, edad, CategoriaEnum.Activo);
 		clienteList.add(cliente);
-		//clienteList.add(cliente.getRunCliente());
-		//clienteList.add(cliente.getNombreClente());
-		//clienteList.add(cliente.getApellidoCliente());
-		//clienteList.add(cliente.getAniosCliente());
-		//clienteList.add(cliente.getNombreCategoria().toString());
+		//clienteList.add(cliente.setRunCliente());
+		//clienteList.add(cliente.setNombreClente());
+		//clienteList.add(cliente.setApellidoCliente());
+		//clienteList.add(cliente.setAniosCliente());
+		//clienteList.add(cliente.setNombreCategoria().toString());
 		
 		//listaClientes.add(cliente);
 		
