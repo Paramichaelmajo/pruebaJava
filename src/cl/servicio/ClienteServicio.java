@@ -100,9 +100,55 @@ public class ClienteServicio {
 			}
 			break;
 		case "2":
+			for(Cliente cli: clienteList) {
+				if(cli.getRunCliente().equals(run)){
+					System.out.println("-----Actualizando estado del Cliente----");
+					System.out.println("");
+					System.out.println("1.-El RUN del Cliente es: "+cli.getRunCliente());
+					System.out.println("2.-El Nombre del Cliente es: "+cli.getNombreClente());
+					System.out.println("3.-El Apellido del Cliente es: "+cli.getApellidoCliente());
+					System.out.println("4.-Los años como Cliente son: "+ cli.getAniosCliente() +"años");
+					System.out.println("");
+					System.out.printf("Ingrese opcion a editar de los datos del cliente:");
+					System.out.println("----------------------------------------");
+					String opci = scaner.nextLine();
+					switch(opci) {
+						case "1":
+							System.out.println("----------------------------------------");
+							System.out.println("1.-Ingrese nuevo RUN del Cliente:");
+							String nuevoRun = scaner.nextLine();
+							System.out.println("---------------------------------------- Datos cambiados con éxito");
+							cli.setRunCliente(nuevoRun);
+							break;
+						case "2":
+							System.out.println("----------------------------------------");
+							System.out.println("1.-Ingrese nuevo NOMBRE del Cliente:");
+							String nuevoNombre = scaner.nextLine();
+							System.out.println("---------------------------------------- Datos cambiados con éxito");
+							cli.setNombreClente(nuevoNombre);
+							break;
+						case "3":
+							System.out.println("----------------------------------------");
+							System.out.println("1.-Ingrese nuevo APELLIDO del Cliente:");
+							String nuevoApellido = scaner.nextLine();
+							System.out.println("---------------------------------------- Datos cambiados con éxito");
+							cli.setApellidoCliente(nuevoApellido);
+							break;
+						case "4":
+							System.out.println("----------------------------------------");
+							System.out.println("1.-Ingrese nueva EDAD del Cliente:");
+							String nuevoAnios = scaner.nextLine();
+							System.out.println("---------------------------------------- Datos cambiados con éxito");
+							cli.setAniosCliente(nuevoAnios);
+							break;
+					}
+				}else{
+					//System.out.println("Run no existe.");
+				}				
+			}
+			break;
 			//System.out.println("existe");
 			//System.out.println(cli.getRunCliente());
-			break;
 		default:
 			break;
 		}
