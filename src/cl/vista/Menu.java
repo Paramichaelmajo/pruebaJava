@@ -1,21 +1,27 @@
 package cl.vista;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import cl.modelo.CategoriaEnum;
 import cl.modelo.Cliente;
 import cl.servicio.ArchivoServicio;
 import cl.servicio.ClienteServicio;
+import cl.servicio.ExportarCsv;
+import cl.servicio.ExportarTxt;
 
 public class Menu {
 	ClienteServicio clienteServicio = new ClienteServicio();
 	ArchivoServicio archivoServicio = new ArchivoServicio();
+	ExportarCsv exportarCsv = new ExportarCsv();
+	ExportarTxt exportarTxt = new ExportarTxt();
 	Scanner scaner = new Scanner(System.in);
 	String fileName = "Clientes";
 	String fileName1 = "DBClientes.csv";
 	
 	//void listarCliente();
 	
-	public void iniciarMenu() {
+	public void iniciarMenu(){
 		boolean salir = false;
 		while(!salir) {
 			System.out.println("1. Listar Clientes");
@@ -51,7 +57,31 @@ public class Menu {
 				}	
 				
 				case "5":{
-					System.out.println("5. Exportar Datos");
+					System.out.println("---------Exportar Datos----------- Seleccione el formato a exportar:");
+					System.out.println("1.-Formato csv");
+					System.out.println("2.-Formato txt");
+					System.out.println("");
+					System.out.printf("Ingrese una opción para exportar: ");
+					String opcionExportar = scaner.nextLine();
+					switch(opcionExportar) {
+						case "1":
+							try {
+								System.out.println("Creando CSV");
+								exportarCsv.exportar(fileName1, clienteServicio.getListaClientes());
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						case "2":
+							try {
+								System.out.println("Creando TXT");
+								exportarTxt.exportar(fileName, clienteServicio.getListaClientes());
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+					}
+					
 					break;
 				}	
 				
