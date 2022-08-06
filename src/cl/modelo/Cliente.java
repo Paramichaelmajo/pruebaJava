@@ -6,8 +6,8 @@ public class Cliente {
 	String apellidoCliente;
 	String aniosCliente;
 	CategoriaEnum nombreCategoria;
-	
-	
+	public Cliente() {
+	}
 	
 	public Cliente(String runCliente, String nombreClente, String apellidoCliente, String aniosCliente,
 			CategoriaEnum nombreCategoria) {

@@ -41,6 +41,7 @@ public class Menu {
 				
 				case "3":{
 					System.out.println("3. Editar Cliente");
+					editarCliente();
 					break;
 				}	
 				
@@ -86,6 +87,36 @@ public class Menu {
 	public void editarCliente() {
 		//permite la edición de algún cliente en caso de requerirlo 
 		//o cambiar el estado del cliente.
+		System.out.println("--------------------Editar Cliente--------------------");
+		System.out.println("Seleccione qué desea hacer:");
+		System.out.println("1.-Si desea cambiar el estado del Cliente a Inactivo");
+		System.out.println("2.-Si desea mantener el estado del cliente Activo");
+		System.out.println("");
+		System.out.println("Ingrese opcion:");
+		System.out.println("------------------------------------------------------");
+		System.out.println("----------- Editar cliente------------");
+		System.out.println("Seleccione qué desea hacer: ");
+		System.out.println("1.-Cambiar el estado del Cliente");
+		System.out.println("2.-Editar los datos ingresados del Cliente");
+		System.out.println("Ingrese opción");
+		String opcion = scaner.nextLine();
+		System.out.println("---------------------------------");
+		Cliente cliente = new Cliente();
+		switch(opcion) {
+		case "1":
+			System.out.println("Ingrese RUN del Cliente a editar:");
+			String run = scaner.nextLine();
+			clienteServicio.editarCliente(run, opcion);
+			break;
+		case "2":
+			System.out.println("Ingrese RUN del Cliente a editar:");
+			String run2 = scaner.nextLine();
+			clienteServicio.editarCliente(run2, opcion);
+			break;
+		default:
+			break;
+		}
+
 	}
 	
 	
