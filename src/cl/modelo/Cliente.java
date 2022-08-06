@@ -7,6 +7,8 @@ public class Cliente {
 	String aniosCliente;
 	CategoriaEnum nombreCategoria;
 	
+	
+	
 	public Cliente(String runCliente, String nombreClente, String apellidoCliente, String aniosCliente,
 			CategoriaEnum nombreCategoria) {
 		super();
