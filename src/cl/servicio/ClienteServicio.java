@@ -6,9 +6,10 @@ import java.util.Scanner;
 
 import cl.modelo.CategoriaEnum;
 import cl.modelo.Cliente;
+import cl.utilidades.Utilidad;
 
 public class ClienteServicio {
-	//List<Cliente> listaClientes;
+	Utilidad utilidad = new Utilidad();
 	List<Cliente> listaClientes = new ArrayList<Cliente>();
 
 	public ClienteServicio() {
@@ -18,12 +19,6 @@ public class ClienteServicio {
 		super();
 		this.listaClientes = listaClientes;
 	}
-	/*
-	public ClienteServicio(ArrayList<Cliente> listaClientes) {
-		super();
-		this.listaClientes = listaClientes;
-	}
-	*/
 
 	public List<Cliente> getListaClientes() {
 		return listaClientes;
@@ -32,7 +27,7 @@ public class ClienteServicio {
 	
 	public void retornolistarClientes() {
 		for(Cliente cli: listaClientes) {
-			System.out.println("-------------Datos del Cliente-------------");
+			System.out.println("\n-------------Datos del Cliente-------------");
 			System.out.println("");
 			System.out.println("RUN del Cliente: "+ cli.getRunCliente());
 			System.out.println("Nombre del Cliente: "+ cli.getNombreClente());
@@ -42,20 +37,6 @@ public class ClienteServicio {
 			System.out.println("");			
 			System.out.println("-------------------------------------------");
 		}
-		/*
-		for(Cliente cli: clienteList) {
-			System.out.println("-------------Datos del Cliente-------------");
-			System.out.println("");
-			System.out.println("RUN del Cliente: "+ cli.getRunCliente());
-			System.out.println("Nombre del Cliente: "+ cli.getNombreClente());
-			System.out.println("Apellido del Cliente: "+ cli.getApellidoCliente());
-			System.out.println("Años como Cliente: "+ cli.getAniosCliente());
-			System.out.println("Categoría del Cliente: "+ cli.getNombreCategoria());
-			System.out.println("");			
-			System.out.println("-------------------------------------------");
-		}
-		*/
-		
 	}
 	
 	public void agregarCliente(String run, String nombre, 
@@ -63,8 +44,8 @@ public class ClienteServicio {
 		Cliente cliente = new Cliente(run, nombre, apellido
 				, edad, CategoriaEnum.Activo);
 		listaClientes.add(cliente);
-
-		//listaClientes.add(cliente);
+		System.out.println("Cliente Agregado.");
+		utilidad.esperarTecla();
 		
 	}
 	
@@ -80,14 +61,13 @@ public class ClienteServicio {
 					}else{
 						categoria = CategoriaEnum.Activo;
 					}
-					System.out.println("-----Actualizando estado del Cliente----");
+					System.out.println("\n-----Actualizando estado del Cliente----");
 					System.out.println("El estado actual es: "+ cli.getNombreCategoria());
 					System.out.println("1.-Si desea cambiar el estado del Cliente a "+categoria);
 					System.out.println("2.-Si desea mantener el estado del cliente "
 										+cli.getNombreCategoria());
-					System.out.println("");
-					System.out.print("Ingrese opcion:");
 					System.out.println("----------------------------------------");
+					System.out.printf("\nIngrese opcion:");
 					String opci = scaner.nextLine();
 					switch(opci) {
 						case "1":
@@ -96,8 +76,9 @@ public class ClienteServicio {
 							}else {
 								cli.setNombreCategoria(CategoriaEnum.Activo);
 							}
+							System.out.println("Datos cambiados con éxito");
 							break;
-						case "2":
+						case "3":
 							System.out.println("Volviendo a menu");
 							break;
 					}
@@ -109,54 +90,58 @@ public class ClienteServicio {
 		case "2":
 			for(Cliente cli: listaClientes) {
 				if(cli.getRunCliente().equals(run)){
-					System.out.println("-----Actualizando estado del Cliente----");
+					System.out.println("\n-----Actualizando estado del Cliente----");
 					System.out.println("");
 					System.out.println("1.-El RUN del Cliente es: "+cli.getRunCliente());
 					System.out.println("2.-El Nombre del Cliente es: "+cli.getNombreClente());
 					System.out.println("3.-El Apellido del Cliente es: "+cli.getApellidoCliente());
 					System.out.println("4.-Los años como Cliente son: "+ cli.getAniosCliente() +"años");
-					System.out.println("");
+					System.out.println("\n----------------------------------------");
 					System.out.printf("Ingrese opcion a editar de los datos del cliente:");
-					System.out.println("----------------------------------------");
 					String opci = scaner.nextLine();
 					switch(opci) {
 						case "1":
-							System.out.println("----------------------------------------");
+							System.out.println("\n----------------------------------------");
 							System.out.println("1.-Ingrese nuevo RUN del Cliente:");
 							String nuevoRun = scaner.nextLine();
-							System.out.println("---------------------------------------- Datos cambiados con éxito");
+							System.out.println("----------------------------------------");
 							cli.setRunCliente(nuevoRun);
+							System.out.println("Datos cambiados con éxito");
 							break;
 						case "2":
 							System.out.println("----------------------------------------");
 							System.out.println("1.-Ingrese nuevo NOMBRE del Cliente:");
 							String nuevoNombre = scaner.nextLine();
-							System.out.println("---------------------------------------- Datos cambiados con éxito");
+							System.out.println("----------------------------------------");
 							cli.setNombreClente(nuevoNombre);
+							System.out.println("Datos cambiados con éxito");
 							break;
 						case "3":
 							System.out.println("----------------------------------------");
 							System.out.println("1.-Ingrese nuevo APELLIDO del Cliente:");
 							String nuevoApellido = scaner.nextLine();
-							System.out.println("---------------------------------------- Datos cambiados con éxito");
+							System.out.println("----------------------------------------");
 							cli.setApellidoCliente(nuevoApellido);
+							System.out.println("Datos cambiados con éxito");
 							break;
 						case "4":
 							System.out.println("----------------------------------------");
-							System.out.println("1.-Ingrese nueva EDAD del Cliente:");
+							System.out.println("1.-Ingrese nuevo AÑOS del Cliente:");
 							String nuevoAnios = scaner.nextLine();
-							System.out.println("---------------------------------------- Datos cambiados con éxito");
+							System.out.println("----------------------------------------");
 							cli.setAniosCliente(nuevoAnios);
+							System.out.println("Datos cambiados con éxito");
 							break;
 					}
 				}else{
-					//System.out.println("Run no existe.");
+					System.out.println("Run no existe.");
 				}				
 			}
 			break;
 		default:
 			break;
 		}
+		utilidad.esperarTecla();
 	}
 
 	

@@ -9,12 +9,16 @@ import cl.servicio.ArchivoServicio;
 import cl.servicio.ClienteServicio;
 import cl.servicio.ExportarCsv;
 import cl.servicio.ExportarTxt;
+import cl.utilidades.Utilidad;
 
 public class Menu {
 	ClienteServicio clienteServicio = new ClienteServicio();
 	ArchivoServicio archivoServicio = new ArchivoServicio();
 	ExportarCsv exportarCsv = new ExportarCsv();
 	ExportarTxt exportarTxt = new ExportarTxt();
+	
+	Utilidad utilidad = new Utilidad();
+	
 	Scanner scaner = new Scanner(System.in);
 	String fileName = "Clientes";
 	String fileName1 = "DBClientes.csv";
@@ -24,29 +28,21 @@ public class Menu {
 	public void iniciarMenu(){
 		boolean salir = false;
 		while(!salir) {
-			System.out.println("1. Listar Clientes");
-			System.out.println("2. Agregar Cliente");
-			System.out.println("3. Editar Cliente");
-			System.out.println("4. Cargar Datos");
-			System.out.println("5. Exportar Datos");
-			System.out.println("6. Salir");
-			System.out.printf("Ingrese una opcion: ");
+			utilidad.menuPrincipal();
 			String opcion = scaner.nextLine();
 			switch (opcion){
 				case "1":{
-					System.out.println("1. Listar Clientes");
 					listarCliente();
+					utilidad.esperarTecla();
 					break;
 				}
 				
 				case "2":{
-					System.out.println("2. Agregar Cliente");
 					agregarCliente();
 					break;
 				}	
 				
 				case "3":{
-					System.out.println("3. Editar Cliente");
 					editarCliente();
 					break;
 				}	
@@ -57,43 +53,19 @@ public class Menu {
 				}	
 				
 				case "5":{
-					System.out.println("---------Exportar Datos----------- "
-							+ "\nSeleccione el formato a exportar:");
-					System.out.println("1.-Formato csv");
-					System.out.println("2.-Formato txt");
-					System.out.println("");
-					System.out.printf("Ingrese una opción para exportar: ");
-					String opcionExportar = scaner.nextLine();
-					switch(opcionExportar) {
-						case "1":
-							try {
-								System.out.println("Creando CSV");
-								exportarCsv.exportar(fileName1, clienteServicio.getListaClientes());
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							break;
-						case "2":
-							try {
-								System.out.println("Creando TXT");
-								exportarTxt.exportar(fileName, clienteServicio.getListaClientes());
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							break;
-					}
-					
+					exportarDatos();
+					System.out.println("Datos exportados.");
+					utilidad.esperarTecla();
 					break;
 				}	
 				
 				case "6":{
-					System.out.println("6. Salir");
+					terminarPrograma();
 					salir = true;
 					break;
 				}	
 			}
+			utilidad.limpiarPantalla();
 		}
 	}
 	
@@ -101,9 +73,8 @@ public class Menu {
 		clienteServicio.retornolistarClientes();
 	}
 	
-	public void agregarCliente() {//Aqui se invoca al otro metodo pasandole un cliente
-		//solicita ingreso de datos y llena objeto de tipo Cliente.
-		System.out.println("-------------Crear Cliente-------------");
+	public void agregarCliente() {
+		System.out.println("\n-------------Crear Cliente-------------");
 		System.out.println("Ingresa RUN del Cliente:");
 		String runCliente = scaner.nextLine();
 		System.out.println("Ingresa Nombre del Cliente:");
@@ -118,30 +89,17 @@ public class Menu {
 	}
 	
 	public void editarCliente() {
-		//permite la edición de algún cliente en caso de requerirlo 
-		//o cambiar el estado del cliente.
-		System.out.println("--------------------Editar Cliente--------------------");
-		System.out.println("Seleccione qué desea hacer:");
-		System.out.println("1.-Si desea cambiar el estado del Cliente a Inactivo");
-		System.out.println("2.-Si desea mantener el estado del cliente Activo");
-		System.out.println("");
-		System.out.println("Ingrese opcion:");
-		System.out.println("------------------------------------------------------");
-		System.out.println("----------- Editar cliente------------");
-		System.out.println("Seleccione qué desea hacer: ");
-		System.out.println("1.-Cambiar el estado del Cliente");
-		System.out.println("2.-Editar los datos ingresados del Cliente");
-		System.out.println("Ingrese opción");
+		utilidad.menuEditarCliente();
 		String opcion = scaner.nextLine();
-		System.out.println("---------------------------------");
+		System.out.println("\n---------------------------------");
 		Cliente cliente = new Cliente();
 		switch(opcion) {
-		case "1":
+		case "1"://Cambiar estado
 			System.out.println("Ingrese RUN del Cliente a editar:");
 			String run = scaner.nextLine();
 			clienteServicio.editarCliente(run, opcion);
 			break;
-		case "2":
+		case "2"://Cambiar datos Cliente
 			System.out.println("Ingrese RUN del Cliente a editar:");
 			String run2 = scaner.nextLine();
 			clienteServicio.editarCliente(run2, opcion);
@@ -152,19 +110,38 @@ public class Menu {
 
 	}
 	
-	
-	
-	
-	
 	public void importarDatos() {
 		//ejecuta la carga de datos del archivo “DBClientes.csv”.
 	}
 	
 	public void exportarDatos() {
-		//llama a método para exportar clientes en formato “.txt” o “.csv”.
+		utilidad.menuExportar();
+		String opcionExportar = scaner.nextLine();
+		switch(opcionExportar) {
+			case "1":
+				try {
+					System.out.println("Creando CSV");
+					exportarCsv.exportar(fileName1, clienteServicio.getListaClientes());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "2":
+				try {
+					System.out.println("Creando TXT");
+					exportarTxt.exportar(fileName, clienteServicio.getListaClientes());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+		}
 	}
 	
 	public void terminarPrograma() {
-		//termina el programa
+		utilidad.limpiarPantalla();
+		System.out.println("Terminando Programa.....");
+		System.exit(0);
 	}
 }
