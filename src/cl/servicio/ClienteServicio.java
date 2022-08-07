@@ -52,8 +52,10 @@ public class ClienteServicio {
 	public void editarCliente(String run, String opcion) {
 		Scanner scaner = new Scanner(System.in);
 		switch(opcion) {
-		case "1"://
+		case "1"://Cambiar estado
+			boolean existeRun1 = true;
 			for(Cliente cli: listaClientes) {
+				
 				if(cli.getRunCliente().equals(run)){
 					CategoriaEnum categoria = CategoriaEnum.Activo;
 					if(cli.getNombreCategoria().equals(categoria)) {
@@ -82,12 +84,18 @@ public class ClienteServicio {
 							System.out.println("Volviendo a menu");
 							break;
 					}
+					existeRun1 = true;
+					break;
 				}else{
-					System.out.println("Run no existe.");
+					existeRun1 = false;
 				}				
+			}
+			if(!existeRun1) {
+				System.out.println("Run no EXISTE.");
 			}
 			break;
 		case "2":
+			boolean existeRun2 = true;
 			for(Cliente cli: listaClientes) {
 				if(cli.getRunCliente().equals(run)){
 					System.out.println("\n-----Actualizando estado del Cliente----");
@@ -107,6 +115,7 @@ public class ClienteServicio {
 							System.out.println("----------------------------------------");
 							cli.setRunCliente(nuevoRun);
 							System.out.println("Datos cambiados con éxito");
+							existeRun2 = true;
 							break;
 						case "2":
 							System.out.println("----------------------------------------");
@@ -115,6 +124,7 @@ public class ClienteServicio {
 							System.out.println("----------------------------------------");
 							cli.setNombreClente(nuevoNombre);
 							System.out.println("Datos cambiados con éxito");
+							existeRun2 = true;
 							break;
 						case "3":
 							System.out.println("----------------------------------------");
@@ -123,6 +133,7 @@ public class ClienteServicio {
 							System.out.println("----------------------------------------");
 							cli.setApellidoCliente(nuevoApellido);
 							System.out.println("Datos cambiados con éxito");
+							existeRun2 = true;
 							break;
 						case "4":
 							System.out.println("----------------------------------------");
@@ -131,11 +142,15 @@ public class ClienteServicio {
 							System.out.println("----------------------------------------");
 							cli.setAniosCliente(nuevoAnios);
 							System.out.println("Datos cambiados con éxito");
+							existeRun2 = true;
 							break;
 					}
 				}else{
-					System.out.println("Run no existe.");
+					existeRun2 = false;
 				}				
+			}
+			if(!existeRun2) {
+				System.out.println("Run no EXISTE.");
 			}
 			break;
 		default:
