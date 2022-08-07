@@ -23,7 +23,6 @@ public class ClienteServicio {
 	public List<Cliente> getListaClientes() {
 		return listaClientes;
 	}
-	//ArrayList<Cliente> clienteList = new ArrayList<Cliente>();
 	
 	public void retornolistarClientes() {
 		for(Cliente cli: listaClientes) {
@@ -189,7 +188,4 @@ public class ClienteServicio {
 		}
 		utilidad.esperarTecla();
 	}
-
-	
-	
 }

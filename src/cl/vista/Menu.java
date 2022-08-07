@@ -16,14 +16,10 @@ public class Menu {
 	ArchivoServicio archivoServicio = new ArchivoServicio();
 	ExportarCsv exportarCsv = new ExportarCsv();
 	ExportarTxt exportarTxt = new ExportarTxt();
-	
 	Utilidad utilidad = new Utilidad();
-	
 	Scanner scaner = new Scanner(System.in);
 	String fileName = "Clientes";
 	String fileName1 = "DBClientes.csv";
-	
-	//void listarCliente();
 	
 	public void iniciarMenu(){
 		boolean salir = false;
@@ -36,29 +32,24 @@ public class Menu {
 					utilidad.esperarTecla();
 					break;
 				}
-				
 				case "2":{
 					agregarCliente();
 					break;
 				}	
-				
 				case "3":{
 					editarCliente();
 					break;
 				}	
-				
 				case "4":{
 					System.out.println("4. Cargar Datos");
 					break;
 				}	
-				
 				case "5":{
 					exportarDatos();
 					System.out.println("Datos exportados.");
 					utilidad.esperarTecla();
 					break;
-				}	
-				
+				}
 				case "6":{
 					terminarPrograma();
 					salir = true;
@@ -79,16 +70,20 @@ public class Menu {
 	public void agregarCliente() {
 		boolean validacionNumero = false;
 		boolean respuestaVacia = true;
+		boolean formatoRunValido = true;
 		String runCliente;
 		String anios ="";
 		String apellidoCliente;
 		String nombreCliente;
 		System.out.println("\n-------------Crear Cliente-------------");
 		do {
-			System.out.println("Ingresa RUN del Cliente:");
-			runCliente = scaner.nextLine();
-			respuestaVacia = utilidad.validarVacio(runCliente);
-		}while(!respuestaVacia);
+			do {
+				System.out.println("Ingresa RUN del Cliente:");
+				runCliente = scaner.nextLine();
+				respuestaVacia = utilidad.validarVacio(runCliente);
+			}while(!respuestaVacia);
+			formatoRunValido = utilidad.validarRun(runCliente);
+		}while(!formatoRunValido);
 		
 		do {
 			System.out.println("Ingresa Nombre del Cliente:");
@@ -147,7 +142,6 @@ public class Menu {
 			System.out.println("Opcion incorrecta");
 			utilidad.limpiarPantalla();
 		}
-
 	}
 	
 	public void importarDatos() {

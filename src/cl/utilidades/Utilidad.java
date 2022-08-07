@@ -15,7 +15,6 @@ public class Utilidad {
 		    enter  = tecla.nextLine();
 		 }
 		 while(!enter.equals(""));
-		
 	}
 	
 	public void menuPrincipal() {
@@ -62,5 +61,34 @@ public class Utilidad {
 			System.out.println("No se aceptan valores vacios");
 		}
 		return respuesta;
+	}
+	
+	public static boolean validarRun(String run){
+		int largo;
+		String numu;
+		boolean validar;
+		largo = run.length();
+		validar = true;
+		for (int i=1;i<=largo;i++) {
+			numu = run.substring(i-1,i);
+			if (!numu.equals("0")&!numu.equals("1")&!numu.equals("2")
+			   &!numu.equals("3")&!numu.equals("4")&!numu.equals("5")
+			   &!numu.equals("6")&!numu.equals("7")&!numu.equals("8")
+			   &!numu.equals("9")&!numu.equals("-")) {
+			validar = false;
+			}
+			if (numu.equals("-")) {
+				if (i==1) {
+					validar = false;
+				} else {
+					validar = true;
+				}
+			}
+		}
+		
+		if (!validar) {
+			System.out.println("No ingrese letras, caracteres o puntos, excepto guion");
+			}
+		return validar;
 	}
 }
