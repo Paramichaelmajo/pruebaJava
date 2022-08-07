@@ -63,7 +63,10 @@ public class Menu {
 					terminarPrograma();
 					salir = true;
 					break;
-				}	
+				}
+				default:{
+					System.out.println("Opcion incorrecta");
+				}
 			}
 			utilidad.limpiarPantalla();
 		}
@@ -74,6 +77,7 @@ public class Menu {
 	}
 	
 	public void agregarCliente() {
+		boolean validacion = false;
 		System.out.println("\n-------------Crear Cliente-------------");
 		System.out.println("Ingresa RUN del Cliente:");
 		String runCliente = scaner.nextLine();
@@ -81,11 +85,22 @@ public class Menu {
 		String nombreCliente = scaner.nextLine();
 		System.out.println("Ingresa Apellido del Cliente:");
 		String apellidoCliente = scaner.nextLine();
-		System.out.println("Ingresa años como Cliente:");
-		String aniosCliente = scaner.nextLine();
+		String anios ="";
+		do {
+			System.out.println("Ingresa años como Cliente:");
+			String aniosCliente = scaner.nextLine();
+			if(utilidad.validarNumero(aniosCliente) == false || Integer.parseInt(aniosCliente)<0) {
+				System.out.println("------------------------------------------------------------------------");
+				System.out.println("Solo ingresar numeros positivos ");
+				validacion = false;
+			}else {
+				anios = aniosCliente;
+				validacion = true;
+			}
+		}while(validacion = !validacion);
 		System.out.println("---------------------------------------");
 		clienteServicio.agregarCliente(runCliente, nombreCliente,
-				apellidoCliente, aniosCliente);
+				apellidoCliente, anios);
 	}
 	
 	public void editarCliente() {
@@ -105,7 +120,8 @@ public class Menu {
 			clienteServicio.editarCliente(run2, opcion);
 			break;
 		default:
-			break;
+			System.out.println("Opcion incorrecta");
+			utilidad.limpiarPantalla();
 		}
 
 	}
@@ -136,6 +152,10 @@ public class Menu {
 					e.printStackTrace();
 				}
 				break;
+			default:{
+				System.out.println("Opcion incorrecta");
+				utilidad.limpiarPantalla();
+			}
 		}
 	}
 	

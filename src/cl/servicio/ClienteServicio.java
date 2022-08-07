@@ -83,6 +83,9 @@ public class ClienteServicio {
 						case "3":
 							System.out.println("Volviendo a menu");
 							break;
+						default:
+							System.out.println("Opcion incorrecta");
+							utilidad.limpiarPantalla();
 					}
 					existeRun1 = true;
 					break;
@@ -144,6 +147,8 @@ public class ClienteServicio {
 							System.out.println("Datos cambiados con éxito");
 							existeRun2 = true;
 							break;
+						default:
+							System.out.println("Opcion incorrecta");
 					}
 				}else{
 					existeRun2 = false;

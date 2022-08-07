@@ -4,13 +4,17 @@ import java.util.Scanner;
 
 public class Utilidad {
 	public void limpiarPantalla() {
-		for (int i = 0; i < 20; ++i) System.out.println();
+		for (int i = 0; i < 25; ++i) System.out.println();
 	}
 	
 	public void esperarTecla() {
 		Scanner tecla = new Scanner(System.in);
-		System.out.print("Presione ENTER para continuar....");
-		String enter = tecla.nextLine();
+		String enter ="";
+		do{
+			System.out.print("Presione ENTER para volver a menu....");
+		    enter  = tecla.nextLine();
+		 }
+		 while(!enter.equals(""));
 		
 	}
 	
@@ -39,5 +43,15 @@ public class Utilidad {
 		System.out.println("2.-Formato txt");
 		System.out.println("");
 		System.out.printf("Ingrese una opción para exportar: ");
+	}
+
+	public static boolean validarNumero(String cadena) {
+		int v;
+		try {
+			v = Integer.parseInt(cadena);
+			return true;
+		} catch (NumberFormatException ex) {
+			return false;
+		}
 	}
 }

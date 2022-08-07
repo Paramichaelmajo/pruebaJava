@@ -1,24 +1,8 @@
 -------------Datos del Cliente-------------
-RUN del Cliente: 123
+RUN del Cliente: 13-4
 Nombre del Cliente: Cliente1
 Apellido del Cliente: Apellido1
-Años como Cliente: 12
+Años como Cliente: 0
 Categoría del Cliente: Activo
--------------------------------------------
-
--------------Datos del Cliente-------------
-RUN del Cliente: 789
-Nombre del Cliente: Cliente3
-Apellido del Cliente: Apellido3
-Años como Cliente: 157
-Categoría del Cliente: Inactivo
--------------------------------------------
-
--------------Datos del Cliente-------------
-RUN del Cliente: 654
-Nombre del Cliente: asdasd
-Apellido del Cliente: asdsda
-Años como Cliente: 15
-Categoría del Cliente: Inactivo
 -------------------------------------------
 
