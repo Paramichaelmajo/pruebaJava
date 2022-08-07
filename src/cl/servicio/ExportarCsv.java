@@ -35,9 +35,22 @@ public class ExportarCsv extends Exportador{
 		BufferedWriter memoriaEscritura = new BufferedWriter(escribeArchivo);
 
 		for(Cliente cliente: listaClientes) {			
-			memoriaEscritura.write(cliente+"\n");
+			memoriaEscritura.write(cliente.getRunCliente()
+							  +","+cliente.getNombreClente()
+							  +","+cliente.getApellidoCliente()
+							  +","+cliente.getAniosCliente()
+							  +","+cliente.getNombreCategoria()+"\n");
 		}
 		memoriaEscritura.close();
 	}
 
 }
+
+
+
+
+
+
+
+
+

@@ -72,6 +72,7 @@ public class Menu {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							break;
 						case "2":
 							try {
 								System.out.println("Creando TXT");
@@ -80,6 +81,7 @@ public class Menu {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							break;
 					}
 					
 					break;

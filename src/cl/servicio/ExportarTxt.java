@@ -34,10 +34,28 @@ public class ExportarTxt extends Exportador{
 		FileWriter escribeArchivo = new FileWriter(archivo);
 		BufferedWriter memoriaEscritura = new BufferedWriter(escribeArchivo);
 
-		for(Cliente cliente: listaClientes) {			
-			memoriaEscritura.write(cliente+"\n");
+		for(Cliente cliente: listaClientes) {
+			memoriaEscritura.write("-------------Datos del Cliente-------------\n");
+			memoriaEscritura.write("RUN del Cliente: "+ cliente.getRunCliente()+"\n"
+								  +"Nombre del Cliente: "+ cliente.getNombreClente()+"\n"
+								  +"Apellido del Cliente: "+ cliente.getApellidoCliente()+"\n"
+								  +"Años como Cliente: "+ cliente.getAniosCliente()+"\n"
+								  +"Categoría del Cliente: "+ cliente.getNombreCategoria()+"\n"
+								  +"-------------------------------------------\n\n");
 		}
 		memoriaEscritura.close();
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
