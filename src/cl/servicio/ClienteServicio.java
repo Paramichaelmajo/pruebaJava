@@ -85,7 +85,7 @@ public class ClienteServicio {
 							break;
 						default:
 							System.out.println("Opcion incorrecta");
-							utilidad.limpiarPantalla();
+							//utilidad.limpiarPantalla();
 					}
 					existeRun1 = true;
 					break;
@@ -110,11 +110,21 @@ public class ClienteServicio {
 					System.out.println("\n----------------------------------------");
 					System.out.printf("Ingrese opcion a editar de los datos del cliente:");
 					String opci = scaner.nextLine();
+					boolean validacionNumero = false;
+					boolean respuestaVacia = true;
+					String nuevoRun;
+					String nuevoNombre;
+					String nuevoApellido;
+					String nuevoAnios;
+					String anios ="";
 					switch(opci) {
 						case "1":
 							System.out.println("\n----------------------------------------");
-							System.out.println("1.-Ingrese nuevo RUN del Cliente:");
-							String nuevoRun = scaner.nextLine();
+							do {
+								System.out.println("1.-Ingrese nuevo RUN del Cliente:");
+								nuevoRun = scaner.nextLine();
+								respuestaVacia = utilidad.validarVacio(nuevoRun);
+							}while(!respuestaVacia);
 							System.out.println("----------------------------------------");
 							cli.setRunCliente(nuevoRun);
 							System.out.println("Datos cambiados con éxito");
@@ -122,8 +132,11 @@ public class ClienteServicio {
 							break;
 						case "2":
 							System.out.println("----------------------------------------");
-							System.out.println("1.-Ingrese nuevo NOMBRE del Cliente:");
-							String nuevoNombre = scaner.nextLine();
+							do {
+								System.out.println("1.-Ingrese nuevo NOMBRE del Cliente:");
+								nuevoNombre = scaner.nextLine();
+								respuestaVacia = utilidad.validarVacio(nuevoNombre);
+							}while(!respuestaVacia);
 							System.out.println("----------------------------------------");
 							cli.setNombreClente(nuevoNombre);
 							System.out.println("Datos cambiados con éxito");
@@ -131,8 +144,11 @@ public class ClienteServicio {
 							break;
 						case "3":
 							System.out.println("----------------------------------------");
-							System.out.println("1.-Ingrese nuevo APELLIDO del Cliente:");
-							String nuevoApellido = scaner.nextLine();
+							do {
+								System.out.println("1.-Ingrese nuevo APELLIDO del Cliente:");
+								nuevoApellido = scaner.nextLine();
+								respuestaVacia = utilidad.validarVacio(nuevoApellido);
+							}while(!respuestaVacia);
 							System.out.println("----------------------------------------");
 							cli.setApellidoCliente(nuevoApellido);
 							System.out.println("Datos cambiados con éxito");
@@ -140,10 +156,20 @@ public class ClienteServicio {
 							break;
 						case "4":
 							System.out.println("----------------------------------------");
-							System.out.println("1.-Ingrese nuevo AÑOS del Cliente:");
-							String nuevoAnios = scaner.nextLine();
+							do {
+								System.out.println("1.-Ingrese nuevo AÑOS del Cliente:");
+								nuevoAnios = scaner.nextLine();
+								if(utilidad.validarNumero(nuevoAnios) == false || Integer.parseInt(nuevoAnios)<0) {
+									System.out.println("------------------------------------------------------------------------");
+									System.out.println("Solo ingresar numeros positivos");
+									validacionNumero = false;
+								}else {
+									anios = nuevoAnios;
+									validacionNumero = true;
+								}
+							}while(validacionNumero = !validacionNumero);
 							System.out.println("----------------------------------------");
-							cli.setAniosCliente(nuevoAnios);
+							cli.setAniosCliente(anios);
 							System.out.println("Datos cambiados con éxito");
 							existeRun2 = true;
 							break;

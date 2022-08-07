@@ -54,4 +54,13 @@ public class Utilidad {
 			return false;
 		}
 	}
+	
+	public static boolean validarVacio(String cadena) {
+		boolean respuesta = true;
+		if((cadena == null || cadena.trim().isEmpty())) {
+			respuesta = false;
+			System.out.println("No se aceptan valores vacios");
+		}
+		return respuesta;
+	}
 }

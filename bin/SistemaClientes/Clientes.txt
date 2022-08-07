@@ -1,8 +1,8 @@
 -------------Datos del Cliente-------------
-RUN del Cliente: 13-4
-Nombre del Cliente: Cliente1
-Apellido del Cliente: Apellido1
-Años como Cliente: 0
-Categoría del Cliente: Activo
+RUN del Cliente: 123
+Nombre del Cliente: bjhm
+Apellido del Cliente: vgjh
+Años como Cliente: 15
+Categoría del Cliente: Inactivo
 -------------------------------------------
 

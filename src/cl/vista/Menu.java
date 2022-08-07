@@ -77,27 +77,42 @@ public class Menu {
 	}
 	
 	public void agregarCliente() {
-		boolean validacion = false;
-		System.out.println("\n-------------Crear Cliente-------------");
-		System.out.println("Ingresa RUN del Cliente:");
-		String runCliente = scaner.nextLine();
-		System.out.println("Ingresa Nombre del Cliente:");
-		String nombreCliente = scaner.nextLine();
-		System.out.println("Ingresa Apellido del Cliente:");
-		String apellidoCliente = scaner.nextLine();
+		boolean validacionNumero = false;
+		boolean respuestaVacia = true;
+		String runCliente;
 		String anios ="";
+		String apellidoCliente;
+		String nombreCliente;
+		System.out.println("\n-------------Crear Cliente-------------");
+		do {
+			System.out.println("Ingresa RUN del Cliente:");
+			runCliente = scaner.nextLine();
+			respuestaVacia = utilidad.validarVacio(runCliente);
+		}while(!respuestaVacia);
+		
+		do {
+			System.out.println("Ingresa Nombre del Cliente:");
+			nombreCliente = scaner.nextLine();
+			respuestaVacia = utilidad.validarVacio(nombreCliente);
+		}while(!respuestaVacia);
+		
+		do {
+			System.out.println("Ingresa Apellido del Cliente:");
+			apellidoCliente = scaner.nextLine();
+			respuestaVacia = utilidad.validarVacio(apellidoCliente);
+		}while(!respuestaVacia);
 		do {
 			System.out.println("Ingresa años como Cliente:");
 			String aniosCliente = scaner.nextLine();
 			if(utilidad.validarNumero(aniosCliente) == false || Integer.parseInt(aniosCliente)<0) {
 				System.out.println("------------------------------------------------------------------------");
 				System.out.println("Solo ingresar numeros positivos ");
-				validacion = false;
+				validacionNumero = false;
 			}else {
 				anios = aniosCliente;
-				validacion = true;
+				validacionNumero = true;
 			}
-		}while(validacion = !validacion);
+		}while(validacionNumero = !validacionNumero);
 		System.out.println("---------------------------------------");
 		clienteServicio.agregarCliente(runCliente, nombreCliente,
 				apellidoCliente, anios);
@@ -108,15 +123,24 @@ public class Menu {
 		String opcion = scaner.nextLine();
 		System.out.println("\n---------------------------------");
 		Cliente cliente = new Cliente();
+		String run;
+		String run2;
+		boolean respuestaVacia = true;
 		switch(opcion) {
 		case "1"://Cambiar estado
-			System.out.println("Ingrese RUN del Cliente a editar:");
-			String run = scaner.nextLine();
+			do {
+				System.out.println("Ingrese RUN del Cliente a editar:");
+				run = scaner.nextLine();
+				respuestaVacia = utilidad.validarVacio(run);
+			}while(!respuestaVacia);
 			clienteServicio.editarCliente(run, opcion);
 			break;
 		case "2"://Cambiar datos Cliente
-			System.out.println("Ingrese RUN del Cliente a editar:");
-			String run2 = scaner.nextLine();
+			do {
+				System.out.println("Ingrese RUN del Cliente a editar:");
+				run2 = scaner.nextLine();
+				respuestaVacia = utilidad.validarVacio(run2);
+			}while(!respuestaVacia);
 			clienteServicio.editarCliente(run2, opcion);
 			break;
 		default:
