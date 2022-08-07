@@ -74,9 +74,15 @@ public class ClienteServicio {
 		case "1"://
 			for(Cliente cli: listaClientes) {
 				if(cli.getRunCliente().equals(run)){
+					CategoriaEnum categoria = CategoriaEnum.Activo;
+					if(cli.getNombreCategoria().equals(categoria)) {
+						categoria = CategoriaEnum.Inactivo;
+					}else{
+						categoria = CategoriaEnum.Activo;
+					}
 					System.out.println("-----Actualizando estado del Cliente----");
 					System.out.println("El estado actual es: "+ cli.getNombreCategoria());
-					System.out.println("1.-Si desea cambiar el estado del Cliente a Inactivo");
+					System.out.println("1.-Si desea cambiar el estado del Cliente a "+categoria);
 					System.out.println("2.-Si desea mantener el estado del cliente "
 										+cli.getNombreCategoria());
 					System.out.println("");

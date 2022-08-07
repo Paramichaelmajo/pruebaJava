@@ -57,7 +57,8 @@ public class Menu {
 				}	
 				
 				case "5":{
-					System.out.println("---------Exportar Datos----------- Seleccione el formato a exportar:");
+					System.out.println("---------Exportar Datos----------- "
+							+ "\nSeleccione el formato a exportar:");
 					System.out.println("1.-Formato csv");
 					System.out.println("2.-Formato txt");
 					System.out.println("");
