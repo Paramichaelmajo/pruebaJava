@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import cl.interfaces.metodosMenu;
 import cl.modelo.CategoriaEnum;
 import cl.modelo.Cliente;
 import cl.servicio.ArchivoServicio;
@@ -11,7 +12,7 @@ import cl.servicio.ExportarCsv;
 import cl.servicio.ExportarTxt;
 import cl.utilidades.Utilidad;
 
-public class Menu {
+public class Menu implements metodosMenu{
 	ClienteServicio clienteServicio = new ClienteServicio();
 	ArchivoServicio archivoServicio = new ArchivoServicio();
 	ExportarCsv exportarCsv = new ExportarCsv();
@@ -62,11 +63,11 @@ public class Menu {
 			utilidad.limpiarPantalla();
 		}
 	}
-	
+	@Override
 	public void listarCliente() {
 		clienteServicio.retornolistarClientes();
 	}
-	
+	@Override
 	public void agregarCliente() {
 		boolean validacionNumero = false;
 		boolean respuestaVacia = true;
@@ -112,7 +113,7 @@ public class Menu {
 		clienteServicio.agregarCliente(runCliente, nombreCliente,
 				apellidoCliente, anios);
 	}
-	
+	@Override
 	public void editarCliente() {
 		utilidad.menuEditarCliente();
 		String opcion = scaner.nextLine();
@@ -143,11 +144,11 @@ public class Menu {
 			utilidad.limpiarPantalla();
 		}
 	}
-	
+	@Override
 	public void importarDatos() {
 		//ejecuta la carga de datos del archivo “DBClientes.csv”.
 	}
-	
+	@Override
 	public void exportarDatos() {
 		utilidad.menuExportar();
 		String opcionExportar = scaner.nextLine();
@@ -176,7 +177,7 @@ public class Menu {
 			}
 		}
 	}
-	
+	@Override
 	public void terminarPrograma() {
 		utilidad.limpiarPantalla();
 		System.out.println("Terminando Programa.....");
