@@ -74,7 +74,7 @@ public class Utilidad {
 			if (!numu.equals("0")&!numu.equals("1")&!numu.equals("2")
 			   &!numu.equals("3")&!numu.equals("4")&!numu.equals("5")
 			   &!numu.equals("6")&!numu.equals("7")&!numu.equals("8")
-			   &!numu.equals("9")&!numu.equals("-")) {
+			   &!numu.equals("9")&!numu.equals("-")&!numu.equalsIgnoreCase("k")) {
 			validar = false;
 			}
 			if (numu.equals("-")) {

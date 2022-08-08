@@ -111,6 +111,7 @@ public class ClienteServicio {
 					String opci = scaner.nextLine();
 					boolean validacionNumero = false;
 					boolean respuestaVacia = true;
+					boolean formatoRunValido = true;
 					String nuevoRun;
 					String nuevoNombre;
 					String nuevoApellido;
@@ -120,10 +121,13 @@ public class ClienteServicio {
 						case "1":
 							System.out.println("\n----------------------------------------");
 							do {
-								System.out.println("1.-Ingrese nuevo RUN del Cliente:");
-								nuevoRun = scaner.nextLine();
-								respuestaVacia = utilidad.validarVacio(nuevoRun);
-							}while(!respuestaVacia);
+								do {
+									System.out.println("1.-Ingrese nuevo RUN del Cliente:");
+									nuevoRun = scaner.nextLine();
+									respuestaVacia = utilidad.validarVacio(nuevoRun);
+								}while(!respuestaVacia);
+								formatoRunValido = utilidad.validarRun(nuevoRun);
+							}while(!formatoRunValido);
 							System.out.println("----------------------------------------");
 							cli.setRunCliente(nuevoRun);
 							System.out.println("Datos cambiados con éxito");
